@@ -1,0 +1,21 @@
+bird(canary).
+bird(sparrow).
+bird(ostrich).
+
+can_fly(canary).
+can_fly(sparrow).
+
+fly(X) :-
+    bird(X),
+    can_fly(X),
+    write(X), write(' can fly.'), nl.
+
+fly(X) :-
+    bird(X),
+    \+ can_fly(X),
+    write(X), write(' cannot fly.'), nl.
+
+% Queries
+:- fly(canary).
+:- fly(sparrow).
+:- fly(ostrich).

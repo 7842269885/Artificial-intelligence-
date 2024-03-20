@@ -1,0 +1,25 @@
+% Define initial facts
+bird(canary).
+bird(sparrow).
+bird(ostrich).
+
+% Define initial rules
+can_fly(X) :- bird(X), X \= ostrich.
+
+% Forward chaining
+forward_chaining :-
+    bird(B),
+    can_fly(B),
+    write(B), write(' can fly.'), nl,
+    assert(can_fly(B)),
+    fail.
+
+forward_chaining :-
+    bird(B),
+    \+ can_fly(B),
+    write(B), write(' cannot fly.'), nl,
+    assert(cannot_fly(B)),
+    fail.
+
+% Execute forward chaining
+:- forward_chaining.
